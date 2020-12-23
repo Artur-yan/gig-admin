@@ -1,0 +1,126 @@
+@import 'bootstrap-variables';
+
+.dropzone {
+  border: 1px solid $primary;
+  cursor: pointer;
+  position: relative;
+  outline-offset: -10px;
+  background: #fff;
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  padding-top: 30px;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  // Cards with color accent
+  @each $color, $value in $theme-colors {
+    &.#{$color} {
+      border-color: $value !important;
+
+      .dropzone-inner {
+        color: $value !important;
+      }
+
+      .progress-bar {
+        background-color: $value;
+      }
+    }
+  }
+
+  &.preview {
+    cursor: default;
+
+    .remove-file {
+      cursor: pointer;
+      color: $danger;
+    }
+  }
+
+  &:not(.preview):hover,
+  &.in,
+  &.disabled {
+    background-size: 30px 30px;
+    background-image: -webkit-linear-gradient(135deg,#F6F6F6 25%,transparent 25%,transparent 50%,#F6F6F6 50%,#F6F6F6 75%,transparent 75%,transparent);
+    background-image: linear-gradient(-45deg,#F6F6F6 25%,transparent 25%,transparent 50%,#F6F6F6 50%,#F6F6F6 75%,transparent 75%,transparent);
+  }
+
+  &:not(.disabled):not(.preview):hover,
+  &.in:not(.disabled) {
+    -webkit-animation: stripes 2s linear infinite;
+    -moz-animation: stripes 2s linear infinite;
+    -ms-animation: stripes 2s linear infinite;
+    -o-animation: stripes 2s linear infinite;
+    animation: stripes 2s linear infinite;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+  &.fade {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -ms-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+    opacity: 1;
+  }
+
+  &.disabled .dropzone-intro {
+    position: absolute;
+  }
+
+  &.disabled .dropzone-inner.dropzone-intro {
+    text-decoration: line-through;
+  }
+
+  &in .dropzone-inner.dropzone-intro {
+    opacity: 0;
+  }
+
+  &.in .dropzone-inner.dropzone-drop-me {
+    opacity: 1;
+  }
+
+  .progress {
+    height: 8px;
+  }
+
+  .progress .indeterminate:after {
+    -webkit-animation-delay: 3.15s;
+    -moz-animation-delay: 3.15s;
+    -ms-animation-delay: 3.15s;
+    -o-animation-delay: 3.15s;
+    animation-delay: 3.15s;
+  }
+}
+
+.dropzone-inner {
+  color: #3e3e3e;
+  position: absolute;
+}
+
+.dropzone-inner.dropzone-intro {
+  opacity: 1;
+}
+
+.dropzone-inner.dropzone-drop-me {
+  opacity: 0;
+}
+
+@-webkit-keyframes stripes {
+  from {
+    background-position: 0 0; }
+
+  to {
+    background-position: 60px 30px; } }
+
+@keyframes stripes {
+  from {
+    background-position: 0 0; }
+
+  to {
+    background-position: 60px 30px; } }

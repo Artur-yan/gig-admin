@@ -1,0 +1,1 @@
+export const LOCATION_CHANGE = '[App] LOCATION_CHANGE';

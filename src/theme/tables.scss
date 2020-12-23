@@ -1,0 +1,20 @@
+.table-helpers {
+  display: inline;
+
+  & > * {
+    float: left;
+  }
+
+  .action-buttons {
+    float: right;
+    padding-top: 30px;
+  }
+}
+
+.valign-top {
+  vertical-align: top !important;
+}
+
+.valign-middle {
+  vertical-align: middle !important;
+}
